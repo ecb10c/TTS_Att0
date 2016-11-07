@@ -1,0 +1,55 @@
+{#带起始限制的双日期选择框#}
+{#    完全不明白id和div class中的命名有什么区别，一个是.start_date，一个是starttime#}
+<script type="text/javascript" src="../static/DateTimePicker/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../static/DateTimePicker/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/DateTimePicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../static/DateTimePicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+
+	$('.start_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    }).on('changeDate',function(ev){
+        $('.end_date').datetimepicker('setStartDate',  $("#startTime").val());
+    });
+
+
+    $('.end_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0,
+    })
+</script>
+
+{#<div class="container">#}
+{#    <form action="" class="form-horizontal" role="form">#}
+{#        <fieldset>#}
+{#            <div class="form-group">#}
+{#                <div class="input-group date start_date col-md-5" data-date="" data-date-format="yyyy-mm-dd"#}
+{#                     data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">#}
+{#                    <input class="form-control" size="16" type="text" value="" id="starttime" readonly>#}
+{#                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>#}
+{#                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>#}
+{#                </div>#}
+{#                <div class="input-group date end_date col-md-5" data-date="" data-date-format="yyyy-mm-dd"#}
+{#                     data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">#}
+{#                    <input class="form-control" size="16" type="text" value="" id="endtime" readonly>#}
+{#                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>#}
+{#                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>#}
+{#                </div>#}
+{#            </div>#}
+{#        </fieldset>#}
+{#    </form>#}
+{#</div>#}
+{#{% include 'dateTimePickerFooter_Db.html' %}#}

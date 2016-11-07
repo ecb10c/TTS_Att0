@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if excelDate != None %}
+    您已经上传了{{ excelDate }}的数据，现在写入吗
+    <form method="POST" action="/inputExcel/">
+    {% csrf_token %}
+        <input type="hidden" name="excelDate" value={{ excelDate }}>
+        <input type="submit" name="inputChoice" value="是">
+        <input type="submit" name="inputChoice" value="否">
+    </form>
+{% else %}
+    还没有上传数据
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{#这是模块类的实验#}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}列表页{% endblock %}</title>
+</head>
+<body>
+{% include 'nav.html' %}
+
+{% block content %}
+<div>这里是默认内容，所有继承自这个模板的，如果不覆盖就显示这里的默认内容。</div>
+{% endblock %}
+
+{% include 'bottom.html' %}
+
+{% include 'footer.html' %}
+</body>
+</html>

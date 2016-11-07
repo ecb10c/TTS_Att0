@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'djangoCalendarHeader.html' %}
+</head>
+<body>
+<form enctype="multipart/form-data" method="POST" action="/uploadExcel/">
+    {% csrf_token %}
+    <input type="file" name="excelFile" />
+    <input type="submit" value="上传Excel文件" />
+</form>
+</body>
+</html>

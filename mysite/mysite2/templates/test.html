@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    {% include 'dateTimePickerHeader.html' %}
+</head>
+<body>
+<div class="container">
+    <form action="" class="form-horizontal" role="form">
+        <fieldset>
+            <div class="form-group">
+                <div class="input-group date start_date col-md-5" data-date="" data-date-format="yyyy-mm-dd"
+                     data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="16" type="text" value="" id="starttime" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+                <div class="input-group date end_date col-md-5" data-date="" data-date-format="yyyy-mm-dd"
+                     data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="16" type="text" value="" id="endtime" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% include 'dateTimePickerFooter_Db.html' %}
+</body>
+</html>

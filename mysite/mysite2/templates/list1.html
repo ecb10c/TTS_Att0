@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>考勤统计</title>
+    {% include 'dateTimePickerHeader.html' %}
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="form-group">
+                <form method="post" action="/list1/" class="form-horizontal" role="form">
+                    {% csrf_token %}
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="input-group date start_date col-md-3" data-date="" data-date-format="yyyy-mm-dd"
+                                 data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" value="" id="startTime" name="startTime" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <div class="input-group date end_date col-md-3" data-date="" data-date-format="yyyy-mm-dd"
+                                 data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" value="" id="endTime" name="endTime" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </fieldset>
+                     <input type="submit" value="查询">
+                </form>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>考勤号码</th>
+                        <th>姓名</th>
+                        <th>对应时段</th>
+                        <th>签到时间</th>
+                        <th>签退时间</th>
+                        <th>迟到时间</th>
+                        <th>早退时间</th>
+                        <th>特殊情况</th>
+                        <th>请假状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in list %}
+                        {#                    {% if not forloop.first %}#}
+                        <tr>
+                            {#                        以下是直接从Excel中取值的用法#}
+                            {#                            <td>{{ i.1 }}</td>#}
+                            {#                            <td>{{ i.3 }}</td>#}
+                            {#                            <td>{{ i.6 }}</td>#}
+                            {#                            <td>{% if i.9 %}{{ i.9 }}{% else %}未签到{% endif %}</td>#}
+                            {#                            <td>{% if i.10 %}{{ i.10 }}{% else %}未签退{% endif %}</td>#}
+                            {#                            <td>{% if i.13 %}{{ i.13 }}{% else %}无{% endif %}</td>#}
+                            {#                            <td>{% if i.14 %}{{ i.14 }}{% else %}无{% endif %}</td>#}
+                            {#                            <td>{% if i.15 %}是{% else %}否{% endif %}</td>#}
+                            {#                            <td>无</td>#}
+                            <td>{{ i.attDate|date:'Y年m月d日' }}</td>
+                            <td>{{ i.attID }}</td>
+                            <td>{{ i.attName }}</td>
+                            <td>{{ i.attRange }}</td>
+                            <td>{% if i.attCome %}{{ i.attCome|date:'H:i' }}{% else %}未签到{% endif %}</td>
+                            <td>{% if i.attGo %}{{ i.attGo|date:'H:i' }}{% else %}未签退{% endif %}</td>
+                            <td>{% if i.attLate %}{{ i.attLate|date:'H:i' }}{% else %}无{% endif %}</td>
+                            <td>{% if i.attEarly %}{{ i.attEarly|date:'H:i' }}{% else %}无{% endif %}</td>
+                            <td>{{ i.attSpecial }}</td>
+                            <td>无</td>
+                        </tr>
+                        {#                    {% endif %}#}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% include 'dateTimePickerFooter_Db.html' %}
+</body>
+</html>
